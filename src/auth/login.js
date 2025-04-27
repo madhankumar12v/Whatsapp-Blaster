@@ -1,22 +1,19 @@
-const puppeteer = require('puppeteer');
+let loggedIn = false;
 
-let browser, page;
-
-async function loginToWhatsApp() {
-  browser = await puppeteer.launch({
-    headless: false,
-    args: ['--start-maximized']
-  });
-
-  page = await browser.newPage();
-  await page.goto('https://web.whatsapp.com');
-  
-  console.log('Please scan QR code...');
-
-  await page.waitForSelector('canvas[aria-label="Scan me!"]', { timeout: 0 });
-  await page.waitForSelector(`span[title="${process.env.WHATSAPP_USER_NAME}"]`, { timeout: 0 });
-
-  console.log('Logged into WhatsApp successfully!');
+function showLoginPage(req, res) {
+  if (loggedIn) {
+    return res.redirect('/dashboard');
+  }
+  res.sendFile(path.join(__dirname, '../../assets/login.html'));
 }
 
-module.exports = { loginToWhatsApp, page };
+function login(req, res) {
+  const { password } = req.body;
+  if (password === process.env.LOGIN_PASSWORD) {
+    loggedIn = true;
+    return res.redirect('/dashboard');
+  }
+  res.send('Incorrect Password');
+}
+
+module.exports = { showLoginPage, login };
