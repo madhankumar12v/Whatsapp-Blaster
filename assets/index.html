@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MRSA WhatsApp Blaster Dashboard</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="./images/logo.png" alt="MRSA Logo" class="logo">
+      <h1>MRSA WhatsApp Blaster 🚀</h1>
+    </header>
+
+    <section class="dashboard">
+      <h2>Client Management</h2>
+      <div class="client-actions">
+        <input type="text" id="clientName" placeholder="Client Name">
+        <input type="text" id="clientNumber" placeholder="Client WhatsApp Number">
+        <button onclick="addClient()">Add Client</button>
+      </div>
+      <table id="clientsTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Clients will appear here -->
+        </tbody>
+      </table>
+
+      <button class="blast-btn" onclick="startBlast()">Start WhatsApp Blast</button>
+    </section>
+
+    <footer>
+      <p>© 2025 MRSA Business Manager</p>
+    </footer>
+  </div>
+
+  <script src="./dashboard.js"></script>
+</body>
+</html>
