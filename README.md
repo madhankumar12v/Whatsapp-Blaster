@@ -1,91 +1,108 @@
-Overview
+# WhatsApp Blaster
+
+## Overview
 This script automates sending WhatsApp messages (with optional attachments) to a list of phone numbers using WhatsApp Web and Selenium WebDriver.
 
-Prerequisites
-Python 3.7+ installed on your system.
+---
 
-Google Chrome browser installed.
+## Prerequisites
 
-ChromeDriver executable matching your Chrome browser version.
+1. **Python 3.7+** installed on your system.
 
-Required Python Packages
+2. **Google Chrome browser** installed.
+
+3. **ChromeDriver** executable matching your Chrome browser version.
+
+---
+
+## Required Python Packages
+
 Make sure to install these Python packages:
 
-ttkbootstrap
+- `ttkbootstrap`
+- `requests`
+- `pandas`
+- `openpyxl`
+- `selenium`
 
-requests
+---
 
-pandas
+## Step-by-step Setup Guide
 
-openpyxl
+### Step 1: Install Python packages
 
-selenium
-
-Step-by-step Setup Guide
-Step 1: Install Python packages
 Open your terminal or command prompt and run:
 
-bash
-Copy
-Edit
+```bash
 pip install ttkbootstrap requests pandas openpyxl selenium
-Step 2: Install Google Chrome
-Download and install Google Chrome from https://www.google.com/chrome/
 
-Step 3: Check your Chrome version
-Open Chrome and navigate to chrome://settings/help or click Help > About Google Chrome.
+# WhatsApp Blaster Setup Guide
 
-Note your Chrome version number (e.g., 114.0.5735.110).
+## Step 2: Install Google Chrome
 
-Step 4: Download matching ChromeDriver
-Visit https://chromedriver.chromium.org/downloads
+Download and install Google Chrome from:  
+[https://www.google.com/chrome/](https://www.google.com/chrome/)
 
-Download the ChromeDriver version that exactly matches your Chrome browser version.
+---
 
-Extract and place the chromedriver.exe file in your project folder or a known directory.
+## Step 3: Check your Chrome version
 
-Step 5: Verify ChromeDriver location in script
-By default, the script looks for chromedriver.exe in the current project folder.
+- Open Chrome and go to `chrome://settings/help` or click **Help > About Google Chrome**.
+- Note your Chrome version (e.g., `114.0.5735.110`).
 
-If not found, it looks in the fallback path:
-C:\ProgramData\chocolatey\lib\chromedriver\tools\chromedriver.exe
+---
 
-You can modify these paths in the get_driver() function if your chromedriver.exe is elsewhere.
+## Step 4: Download matching ChromeDriver
 
-Step 6: Prepare your contacts file
-Create a CSV or Excel file with a column named Phone.
+- Visit [https://chromedriver.chromium.org/downloads](https://chromedriver.chromium.org/downloads)
+- Download the ChromeDriver version that matches your Chrome browser exactly.
+- Extract and place `chromedriver.exe` in your project folder or a known directory.
 
-Fill this column with phone numbers in international format without '+' or spaces.
-Example: 919876543210 (for an Indian number)
+---
 
-Step 7: Prepare your message and optional attachment
-Write the message text you want to send.
+## Step 5: Verify ChromeDriver location in the script
 
-Prepare any attachment file (image, pdf, etc.) you want to send along with the message (optional).
+- By default, the script looks for `chromedriver.exe` in the current project folder.
+- If not found, it tries the fallback path:  
+  `C:\ProgramData\chocolatey\lib\chromedriver\tools\chromedriver.exe`
+- You can change these paths inside the `get_driver()` function if needed.
 
-Step 8: Run the script
-Run your Python script (for example: python main.py).
+---
 
-When prompted, scan the QR code with your WhatsApp mobile app to log in.
+## Step 6: Prepare your contacts file
 
-The script will start sending messages automatically to all contacts in the file.
+- Create a CSV or Excel file with a column named **Phone**.
+- Fill the **Phone** column with numbers in international format without the `+` sign or spaces.  
+  Example: `919876543210`
 
-Important Notes
-Do NOT run Chrome in headless mode, as file uploads won’t work.
+---
 
-Keep your WhatsApp Web session active during sending.
+## Step 7: Prepare your message and optional attachment
 
-Use an appropriate delay (time.sleep) between messages to avoid rate limiting.
+- Write the message text you want to send.
+- Prepare any attachment file (image, PDF, etc.) if you want to send one (optional).
 
-Ensure all contacts are valid WhatsApp users to avoid failures.
+---
 
-If your file path or attachment path contains spaces, provide the full absolute path or handle quotes properly.
+## Step 8: Run the script
 
-Troubleshooting
-If chromedriver.exe is not found, check your path or download it again.
+- Run the Python script, e.g.,  
+  ```bash
+  python main.py
+## Important Notes
 
-ChromeDriver and Chrome versions must match exactly.
+- Do **NOT** use headless mode in Chrome, as it breaks file uploads.
+- Keep your WhatsApp Web session active during sending.
+- Use delays (e.g., `time.sleep(5)`) between sends to avoid getting blocked or banned.
+- Ensure contacts are valid WhatsApp users.
+- Use absolute file paths if your file paths contain spaces.
 
-If WhatsApp Web UI changes, some element selectors (XPATH, CSS) may need updating.
+---
 
-Check internet connection stability.
+## Troubleshooting
+
+- `chromedriver.exe` not found?  
+  Check the path specified in the script or redownload the matching ChromeDriver version.
+- ChromeDriver and Chrome browser versions **must match exactly**.
+- If WhatsApp Web updates its interface, you may need to update the element selectors in the script.
+- Check your internet connection for stability.
